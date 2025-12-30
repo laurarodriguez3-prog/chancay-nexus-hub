@@ -67,8 +67,8 @@ export const Hero = () => {
             </motion.div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
-              Hub Inteligente para la{" "}
-              <span className="text-prosperity">ZEE Chancay</span>
+              <span className="text-prosperity">CHANCAY NEXUS</span>
+              <span className="block text-2xl md:text-3xl lg:text-4xl mt-2 font-medium">Hub Inteligente ZEE</span>
             </h1>
 
             <p className="text-lg md:text-xl text-primary-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0">
