@@ -41,10 +41,10 @@ export const Footer = () => {
               className="flex items-center gap-3 mb-6"
             >
               <div className="w-12 h-12 rounded-xl bg-prosperity flex items-center justify-center">
-                <span className="text-prosperity-foreground font-bold text-xl">CL</span>
+                <span className="text-prosperity-foreground font-bold text-xl">CN</span>
               </div>
               <div>
-                <span className="text-xl font-bold">CHANCAY LINK</span>
+                <span className="text-xl font-bold">CHANCAY NEXUS</span>
                 <p className="text-xs text-primary-foreground/60">Hub Inteligente ZEE</p>
               </div>
             </motion.div>
@@ -61,8 +61,8 @@ export const Footer = () => {
                 <span>Lima, Perú - ZEE Chancay</span>
               </div>
               <div className="flex items-center gap-3 text-primary-foreground/70">
-                <Mail className="w-4 h-4 text-accent" />
-                <span>contacto@chancaylink.pe</span>
+              <Mail className="w-4 h-4 text-accent" />
+                <span>contacto@chancaynexus.pe</span>
               </div>
               <div className="flex items-center gap-3 text-primary-foreground/70">
                 <Phone className="w-4 h-4 text-accent" />
@@ -124,7 +124,7 @@ export const Footer = () => {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-primary-foreground/60">
-            © 2025 CHANCAY LINK. Todos los derechos reservados.
+            © 2025 CHANCAY NEXUS. Todos los derechos reservados.
           </p>
           
           {/* Social */}
