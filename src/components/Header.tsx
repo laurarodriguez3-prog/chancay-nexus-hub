@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Building2, Users, FileText, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { AuthModals } from "@/components/AuthModals";
 
 const navItems = [
   { label: "Mapa ZEE", icon: MapPin, href: "/mapa-zee" },
@@ -13,6 +14,8 @@ const navItems = [
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
   const location = useLocation();
 
   return (
@@ -65,10 +68,10 @@ export const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="heroOutline" size="sm">
+            <Button variant="heroOutline" size="sm" onClick={() => setShowLogin(true)}>
               Iniciar Sesión
             </Button>
-            <Button variant="hero" size="sm">
+            <Button variant="hero" size="sm" onClick={() => setShowRegister(true)}>
               Registrarse
             </Button>
           </div>
@@ -105,10 +108,10 @@ export const Header = () => {
                 </Link>
               ))}
               <div className="flex gap-2 mt-4">
-                <Button variant="heroOutline" size="sm" className="flex-1">
+                <Button variant="heroOutline" size="sm" className="flex-1" onClick={() => { setShowLogin(true); setMobileMenuOpen(false); }}>
                   Iniciar Sesión
                 </Button>
-                <Button variant="hero" size="sm" className="flex-1">
+                <Button variant="hero" size="sm" className="flex-1" onClick={() => { setShowRegister(true); setMobileMenuOpen(false); }}>
                   Registrarse
                 </Button>
               </div>
@@ -116,6 +119,14 @@ export const Header = () => {
           </motion.div>
         )}
       </div>
+      <AuthModals
+        showLogin={showLogin}
+        showRegister={showRegister}
+        onCloseLogin={() => setShowLogin(false)}
+        onCloseRegister={() => setShowRegister(false)}
+        onSwitchToRegister={() => { setShowLogin(false); setShowRegister(true); }}
+        onSwitchToLogin={() => { setShowRegister(false); setShowLogin(true); }}
+      />
     </motion.header>
   );
 };
