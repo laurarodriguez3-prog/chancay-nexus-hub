@@ -4,6 +4,8 @@ import { X, User, Mail, Lock, Building2, MapPin, Wrench, CheckCircle } from "luc
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 type UserType = "propietario" | "empresa" | "proveedor";
 
@@ -54,6 +56,8 @@ export const AuthModals = ({ showLogin, showRegister, onCloseLogin, onCloseRegis
   const [regPassword, setRegPassword] = useState("");
   const [regType, setRegType] = useState<UserType | null>(null);
   const [success, setSuccess] = useState(false);
+  const { login, register } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,10 +65,12 @@ export const AuthModals = ({ showLogin, showRegister, onCloseLogin, onCloseRegis
       toast.error("Completa todos los campos");
       return;
     }
-    toast.success(`¡Bienvenido de vuelta! Sesión iniciada como ${loginEmail}`);
+    login(loginEmail, loginPassword);
+    toast.success(`¡Bienvenido de vuelta!`);
     setLoginEmail("");
     setLoginPassword("");
     onCloseLogin();
+    navigate("/dashboard");
   };
 
   const handleRegister = (e: React.FormEvent) => {
@@ -75,6 +81,7 @@ export const AuthModals = ({ showLogin, showRegister, onCloseLogin, onCloseRegis
     }
     setSuccess(true);
     setTimeout(() => {
+      register(regName, regEmail, regPassword, regType);
       toast.success(`¡Registro exitoso! Bienvenido ${regName}`);
       setRegName("");
       setRegEmail("");
@@ -82,6 +89,7 @@ export const AuthModals = ({ showLogin, showRegister, onCloseLogin, onCloseRegis
       setRegType(null);
       setSuccess(false);
       onCloseRegister();
+      navigate("/dashboard");
     }, 2000);
   };
 
@@ -124,7 +132,7 @@ export const AuthModals = ({ showLogin, showRegister, onCloseLogin, onCloseRegis
               <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="text-center py-8">
                 <CheckCircle className="w-16 h-16 text-prosperity mx-auto mb-4" />
                 <h2 className="text-2xl font-bold text-foreground">¡Registro Exitoso!</h2>
-                <p className="text-muted-foreground mt-2">Redirigiendo...</p>
+                <p className="text-muted-foreground mt-2">Redirigiendo al dashboard...</p>
               </motion.div>
             ) : (
               <>

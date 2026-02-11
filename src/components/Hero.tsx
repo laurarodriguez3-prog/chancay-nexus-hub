@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MapPin, ArrowRight, Play } from "lucide-react";
-
+import { Link } from "react-router-dom";
 export const Hero = () => {
   return (
     <section className="relative min-h-screen bg-gradient-hero overflow-hidden">
@@ -77,15 +77,19 @@ export const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="hero" size="xl" className="group">
-                <MapPin className="w-5 h-5" />
-                Explorar Mapa ZEE
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button variant="heroOutline" size="xl" className="group">
-                <Play className="w-5 h-5" />
-                Ver Demo
-              </Button>
+              <Link to="/mapa-zee">
+                <Button variant="hero" size="xl" className="group">
+                  <MapPin className="w-5 h-5" />
+                  Explorar Mapa ZEE
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link to="/mapa-zee">
+                <Button variant="heroOutline" size="xl" className="group">
+                  <Play className="w-5 h-5" />
+                  Ver Demo
+                </Button>
+              </Link>
             </div>
 
             {/* Stats */}
@@ -189,10 +193,12 @@ export const Hero = () => {
                   <div className="text-sm text-primary-foreground/70">
                     <span className="text-prosperity font-semibold">12</span> terrenos visibles
                   </div>
-                  <Button variant="accent" size="sm">
-                    Ver todos
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
+                  <Link to="/mapa-zee">
+                    <Button variant="accent" size="sm">
+                      Ver todos
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
